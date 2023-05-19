@@ -1,11 +1,11 @@
 main:
   - title: "Home"
     url: /
-  - title: "Posts"
+  - title: "Artículos"
     url: /year-archive/
-  - title: "Categories"
+  - title: "Categorias"
     url: /categories/
   - title: "Tags"
     url: /tags/
-  - title: "About"
+  - title: "#Whoami"
     url: /about/
