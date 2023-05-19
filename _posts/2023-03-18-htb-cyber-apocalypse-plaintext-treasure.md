@@ -24,7 +24,7 @@ La inteligencia de amenazas descubrió que los alienígenas operan a través de 
 
 ## File
 
-Siempre que realizo desafíos CTF, ejecuto el comando file para averiguar contra qué tipo de archivo me estoy enfrentando. En este caso, se trata de un archivo llamado "capture.pcap" que contiene una captura de paquetes de red en formato pcap. Esta captura utiliza marcas de tiempo en microsegundos y tiene una longitud máxima de captura de 262144 bytes.
+Siempre que realizo desafíos CTF, ejecuto el comando `file` para averiguar contra qué tipo de archivo me estoy enfrentando. En este caso, se trata de un archivo llamado "capture.pcap" que contiene una captura de paquetes de red en formato pcap. Esta captura utiliza marcas de tiempo en microsegundos y tiene una longitud máxima de captura de 262144 bytes.
 
 ```
 ❯ file capture.pcap
