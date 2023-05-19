@@ -21,16 +21,16 @@ tags:
 ![](/assets/images/htb-cyber-apocalypse-plaintext-treasure/cyber-apocalypse-ctf-2023.jpg)
 
 Enunciado:
+
 _La inteligencia de amenazas descubrió que los alienígenas operan a través de un servidor de comando y control alojado en su infraestructura. Pandora logró penetrar sus defensas y tener acceso a su red interna. Debido a que su servidor usa HTTP, Pandora capturó el tráfico de la red para robar las credenciales de administrador del servidor. Abra el archivo proporcionado con Wireshark y localice el nombre de usuario y la contraseña del administrador._
 
 ## File
 
-Siempre que realizo desafíos CTF, ejecuto el comando `file` para averiguar contra qué tipo de archivo me estoy enfrentando. En este caso, se trata de un archivo llamado "capture.pcap" que contiene una captura de paquetes de red en formato pcap. Esta captura utiliza marcas de tiempo en microsegundos y tiene una longitud máxima de captura de 262144 bytes.
+Ejecuto el comando `file` para averiguar contra qué tipo de archivo me estoy enfrentando. En este caso, se trata de un archivo llamado "capture.pcap" que contiene una captura de paquetes de red en formato pcap. Esta captura utiliza marcas de tiempo en microsegundos y tiene una longitud máxima de captura de 262144 bytes.
 
 ```
 ❯ file capture.pcap
 capture.pcap: pcap capture file, microsecond ts (little-endian) - version 2.4 (Ethernet, capture length 262144)
-
 ```
 
 ## Wireshark
