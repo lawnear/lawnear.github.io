@@ -26,7 +26,7 @@ _La inteligencia de amenazas descubrió que los alienígenas operan a través de
 
 ## File
 
-Ejecuto el comando `file` para averiguar contra qué tipo de archivo me estoy enfrentando. En este caso, se trata de un archivo llamado "capture.pcap" que contiene una captura de paquetes de red en formato pcap. Esta captura utiliza marcas de tiempo en microsegundos y tiene una longitud máxima de captura de 262144 bytes.
+Ejecutamos el comando `file` para averiguar contra qué tipo de archivo nos enfrentamos. En este caso, se trata de un archivo llamado "capture.pcap" que contiene una captura de paquetes de red en formato pcap. Esta captura utiliza marcas de tiempo en microsegundos y tiene una longitud máxima de captura de 262144 bytes.
 
 ```
 ❯ file capture.pcap
@@ -35,9 +35,11 @@ capture.pcap: pcap capture file, microsecond ts (little-endian) - version 2.4 (E
 
 ## Wireshark
 
-The Delivery website is pretty basic, there's a link to a vhost called helpdesk.delivery.htb and a contact us section. We'll add this entry to our local host before proceeding further.
-
-![](/assets/images/htb-writeup-delivery/website1.png)
+Tal y como sugiere el enunciado del desafío, procedemos a abrir el archivo con `Wireshark` para encontrar el nombre de usuario y la contraseña del administrador. Nuevamente, el enunciado nos entrega una pista: el tráfico de red capturado corresponde al protocolo HTTP, lo que significa que los datos capturados se encuentran en texto plano. Por lo tanto, el usuario y la contraseña deben ser fáciles de encontrar.
+```
+❯ wireshark capture.pcap
+```
+![](/assets/images/htb-cyber-apocalypse-plaintext-treasure/wireshark1.png)
 
 The contact us section tells us we need an @delivery.htb email address and tells us port 8065 is a MatterMost server. MatterMost is a Slack-like collaboration platform that can be self-hosted.
 
