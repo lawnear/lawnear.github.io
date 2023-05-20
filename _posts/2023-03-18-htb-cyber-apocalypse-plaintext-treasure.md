@@ -22,8 +22,6 @@ tags:
 
 **Dificultad:** very-easy
 
-**Puntos:**	300
-
 ## Enunciado
 
 _La inteligencia de amenazas descubrió que los alienígenas operan a través de un servidor de comando y control alojado en su infraestructura. Pandora logró penetrar sus defensas y tener acceso a su red interna. Debido a que su servidor usa HTTP, Pandora capturó el tráfico de la red para robar las credenciales de administrador del servidor. Abra el archivo proporcionado con Wireshark y localice el nombre de usuario y la contraseña del administrador._
