@@ -21,6 +21,7 @@ tags:
 ![](/assets/images/htb-cyber-apocalypse-plaintext-treasure/cyber-apocalypse-ctf-2023.jpg)
 
 **Dificultad:** very-easy
+
 **Puntos:**	300
 
 ## Enunciado
