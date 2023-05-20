@@ -1,8 +1,10 @@
 ---
 layout: single
 title: PlainText Treasure - CTF HTB Cyber Apocalypse 2023
-excerpt: "Dificultad: very-easy 
+excerpt: "Dificultad: very-easy
+ 
 Puntos: 300
+
 En este desafío de forense, analizaremos una captura de tráfico utilizando Wireshark y el comando strings en busca de un usuario y contraseña (flag)."
 date: 2023-03-18
 classes: wide
