@@ -1,11 +1,7 @@
 ---
 layout: single
 title: PlainText Treasure - CTF HTB Cyber Apocalypse 2023
-excerpt: "Dificultad: very-easy
- 
-Puntos: 300
-
-En este desafío de forense, analizaremos una captura de tráfico utilizando Wireshark y el comando strings en busca de un usuario y contraseña (flag)."
+excerpt: "Este es el primer desafio forense del evento Cyber Apocalypse 2023 de Hack The Box, considerado de dificultad very-easy, en el cual analizaremos una captura de tráfico utilizando Wireshark y el comando strings en busca de un usuario y contraseña (flag)."
 date: 2023-03-18
 classes: wide
 header:
@@ -70,7 +66,7 @@ Con esto, podemos visualizar el nombre de usuario y la contraseña enviada , est
 
 Este desafío es considerado como "very-easy" por Hack The Box, lo que significa que se puede resolver fácilmente utilizando el comando strings y filtrando por la palabra "HTB".
 
-_Strings:se utiliza para extraer y mostrar cadenas de texto legibles desde un archivo o una entrada de datos binarios. Su objetivo principal es identificar y extraer las secuencias de caracteres legibles en archivos que de otra manera podrían contener una mezcla de datos binarios y texto._
+_Comando strings: Se utiliza para extraer y mostrar cadenas de texto legibles desde un archivo o una entrada de datos binarios. Su objetivo principal es identificar y extraer las secuencias de caracteres legibles en archivos que de otra manera podrían contener una mezcla de datos binarios y texto._
 
 ```
 ❯ strings capture.pcap | grep -i HTB
