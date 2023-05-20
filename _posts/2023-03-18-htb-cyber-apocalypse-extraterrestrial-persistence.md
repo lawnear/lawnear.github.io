@@ -1,7 +1,7 @@
 ---
 layout: single
 title: Extraterrestrial Persistence - CTF HTB Cyber Apocalypse 2023
-excerpt: "Este es el tercer desafío forense del evento Cyber Apocalypse 2023 de Hack The Box. Se considera de dificultad very-easy y se nos proporciona un script de shell (.sh) en cual en su interior posee un comando codificado en base64 que contiene la flag."
+excerpt: "Este es el tercer desafío forense del evento Cyber Apocalypse 2023 de Hack The Box. Se considera de dificultad very-easy y se nos proporciona un script de shell (.sh) en cual en su interior posee un cadena codificada en base64 que contiene la flag."
 date: 2023-03-20
 classes: wide
 header:
