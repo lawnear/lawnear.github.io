@@ -2,7 +2,7 @@
 layout: single
 title: Alien Cradle - CTF HTB Cyber Apocalypse 2023
 excerpt: "Este es el segundo desafío forense del evento Cyber Apocalypse 2023 de Hack The Box. Se considera de dificultad very-easy y se nos proporciona un script de PowerShell pseudo-ofuscado que contiene la flag del desafío"
-date: 2023-03-18
+date: 2023-03-19
 classes: wide
 header:
   teaser: /assets/images/htb-cyber-apocalypse-plaintext-treasure/cyber-apocalypse-ctf-2023.jpg
