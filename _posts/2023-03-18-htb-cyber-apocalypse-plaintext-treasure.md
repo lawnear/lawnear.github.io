@@ -50,7 +50,7 @@ Siempre es una buena practica verificar la jerarquia de protocolos que nos entre
 
 ![](/assets/images/htb-cyber-apocalypse-plaintext-treasure/wireshark2.png)
 
-Como podemos observar, efectivamente la mayor cantidad de tráfico de red está relacionado con el protocolo HTTP. En este desafío, se nos pide encontrar el nombre de usuario y la contraseña, los cuales generalmente se envían a través del método POST al interactuar con un sitio web. Por lo tanto podemos aplicar el siguiente filtro en Wireshark para visualizar específicamente este tipo de paquetes: `http.request.method == "POST"`
+Como podemos observar, efectivamente la mayor cantidad de tráfico de red está relacionado con el protocolo HTTP. En este desafío, se nos pide encontrar el nombre de usuario y la contraseña, los cuales se envían a través del método POST al interactuar con un sitio web. Por lo tanto podemos aplicar el siguiente filtro en Wireshark para visualizar específicamente este tipo de paquetes: `http.request.method == "POST"`
 
 ![](/assets/images/htb-cyber-apocalypse-plaintext-treasure/wireshark3.png)
 
@@ -62,13 +62,13 @@ Para poder observar de mejor manera el tráfico capturado y los datos necesarios
 
 
 Al realizar el seguimiento de la secuencia HTTP asociada, Wireshark muestra todos los paquetes relacionados con el flujo TCP, que en este caso es el número 4. Este flujo corresponde a la sesión establecida al momento de enviar las credenciales al servidor web a través de la función `/token`.
-Con esto, podemos visualizar el nombre de usuario y la contraseña enviada , esta última corresponde a la **FLAG** del desafío.
+Con esto, podemos visualizar el nombre de usuario y la contraseña enviada , esta última corresponde a la **flag** del desafío.
 
 ![](/assets/images/htb-cyber-apocalypse-plaintext-treasure/wireshark5.png)
 
 ## Strings
 
-Este desafío es considerado como "very-easy" por Hack The Box, lo que significa que se puede resolver fácilmente utilizando el comando strings y filtrando por la palabra "HTB".
+Este desafío es de dificultad "very-easy", lo que significa que se puede resolver fácilmente utilizando el comando strings y filtrando por la palabra "HTB".
 
 _Comando strings: Se utiliza para extraer y mostrar cadenas de texto legibles desde un archivo o una entrada de datos binarios. Su objetivo principal es identificar y extraer las secuencias de caracteres legibles en archivos que de otra manera podrían contener una mezcla de datos binarios y texto._
 
