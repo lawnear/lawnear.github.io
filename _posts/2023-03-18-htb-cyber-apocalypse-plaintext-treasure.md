@@ -1,7 +1,7 @@
 ---
 layout: single
 title: PlainText Treasure - CTF HTB Cyber Apocalypse 2023
-excerpt: "La inteligencia de amenazas descubrió que los alienígenas operan a través de un servidor de comando y control alojado en su infraestructura. Pandora logró penetrar sus defensas y tener acceso a su red interna. Debido a que su servidor usa HTTP, Pandora capturó el tráfico de la red para robar las credenciales de administrador del servidor. Abra el archivo proporcionado con Wireshark y localice el nombre de usuario y la contraseña del administrador."
+excerpt: "Dificultad: very-easy \n\rPuntos: 300"
 date: 2023-03-18
 classes: wide
 header:
@@ -36,6 +36,7 @@ capture.pcap: pcap capture file, microsecond ts (little-endian) - version 2.4 (E
 ## Wireshark
 
 Tal y como sugiere el enunciado del desafío, procedemos a abrir el archivo con `Wireshark` para encontrar el nombre de usuario y la contraseña del administrador. Nuevamente, el enunciado nos entrega una pista: el tráfico de red capturado corresponde al protocolo HTTP, lo que significa que los datos capturados se encuentran en texto plano. Por lo tanto, el usuario y la contraseña deben ser fáciles de encontrar.
+
 ```
 ❯ wireshark capture.pcap
 ```
@@ -63,13 +64,15 @@ Con esto, podemos visualizar el nombre de usuario y la contraseña enviada , est
 
 ## Strings
 
-Este desafio es considerado por Hack The Box como _very-easy_, por lo tanto se podia resolver facilmente utilizando el comando `strings` y filtrando por la palabra HTB.
+Este desafío es considerado como "very-easy" por Hack The Box, lo que significa que se puede resolver fácilmente utilizando el comando strings y filtrando por la palabra "HTB".
 
 _Strings:se utiliza para extraer y mostrar cadenas de texto legibles desde un archivo o una entrada de datos binarios. Su objetivo principal es identificar y extraer las secuencias de caracteres legibles en archivos que de otra manera podrían contener una mezcla de datos binarios y texto._
+
 ```
 ❯ strings capture.pcap | grep -i HTB
 HTB{th3s3_4l13ns_st1ll_us3_HTTP}
 ```
 
 ## Flag
+
 **HTB{th3s3_4l13ns_st1ll_us3_HTTP}**
