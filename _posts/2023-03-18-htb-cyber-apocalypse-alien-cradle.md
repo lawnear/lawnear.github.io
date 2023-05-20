@@ -67,7 +67,7 @@ Resulta bastante sencillo encontrar la flag, ya que está declarada dentro del s
 HTB{p0w3rsh3ll_Cr4dl3s_c4n_g3t_th3_j0b_d0n3}  
 ```
 
-`tr -dc '[:alnum:]{}_'` : El comando `tr` en Linux es una herramienta que se utiliza para realizar operaciones de traducción o transliteración de caracteres en un flujo de texto. El nombre "tr" es una abreviatura de "translate" (traducir). En este caso se esta utilizando con el argumento `-d` para eliminar caracteres y -c para especificar los caracteres que queremos mantener. `'[:alnum:]{}_'` especifica que se deben mantener los caracteres alfanuméricos ([:alnum:]), los corchetes ({}) y los guiones bajos (\_). Los demás caracteres se eliminarán.
+`tr -dc '[:alnum:]{}_'` : El comando `tr` en Linux es una herramienta que se utiliza para realizar operaciones de traducción o transliteración de caracteres en un flujo de texto. El nombre "tr" es una abreviatura de "translate" (traducir). En este caso se esta utilizando con el argumento `-d` para eliminar caracteres y `-c` para especificar los caracteres que queremos mantener. `'[:alnum:]{}_'` especifica que se deben mantener los caracteres alfanuméricos ([:alnum:]), los corchetes ({}) y los guiones bajos (\_). Los demás caracteres se eliminarán.
 
 ## Flag
 
