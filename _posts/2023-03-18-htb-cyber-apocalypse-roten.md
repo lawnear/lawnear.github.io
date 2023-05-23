@@ -54,7 +54,10 @@ Aplicamos un filtro para ver únicamente el tráfico HTTP y observar el tipo de 
 
 Como podemos observar, el servidor web es `targetaggregator.intergalacticministry.com` y su dirección IP es `172.31.9.156`. Con esta información, podemos comenzar a aplicar otros filtros relevantes. Recordemos que el enunciado del desafío nos indica que se ha cargado algún tipo de webshell. Por lo tanto, es recomendable filtrar las solicitudes web que utilizaron el método POST para interactuar con el sitio, ya que este método podría haber sido utilizado por el atacante para subir información al servidor y, por lo tanto, nos permitiría identificar la carga de la webshell.
 
-Procedemos a filtrar los paquetes utilizando el siguiente filtro en Wireshark: `"http.host == "targetaggregator.intergalacticministry.com" && http.request.method == "POST"`.
+Procedemos a filtrar los paquetes utilizando el siguiente filtro en Wireshark: 
+```
+"http.host == "targetaggregator.intergalacticministry.com" && http.request.method == "POST"
+```
 
 ![](/assets/images/htb-cyber-apocalypse-roten/wireshark4.png)
 
@@ -93,7 +96,9 @@ El comando anterior nos da como resultado múltiples solicitudes utilizando el m
 
 Esto llama mi atención, ya que parece ser que, posterior a subir el archivo `galacticmap.php` al servidor, nuestro posible atacante no tiene claridad de dónde puede haber quedado alojado el archivo que acaba de subir. Por lo tanto, recurre a la enumeración de rutas para lograr dar con su archivo. Perfeccionemos nuestro comando de tshark para validar esta hipótesis de la siguiente forma:
 
-`tshark -r challenge.pcap -Y "http.request.method !== POST and ip.addr == 146.70.38.48" -T fields -e ip.src -e ip.dst -e http.request.method -e http.user_agent -e http.host -e http.request.uri`
+```
+tshark -r challenge.pcap -Y "http.request.method !== POST and ip.addr == 146.70.38.48" -T fields -e ip.src -e ip.dst -e http.request.method -e http.user_agent -e http.host -e http.request.uri
+```
 
 El comando anterior filtrará todas las solicitudes HTTP que no utilicen el método POST y que tengan la dirección IP 146.70.38.48 como origen o destino. Luego, mostrará información específica de cada solicitud, como las direcciones IP, el método de solicitud, el User-Agent, el host y el URI solicitado.
 
