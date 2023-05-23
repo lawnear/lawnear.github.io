@@ -71,7 +71,7 @@ Al realizar un seguimiento de la secuencia HTTP enviada por el archivo PHP, pode
 
 ![](/assets/images/htb-cyber-apocalypse-roten/wireshark6.png)
 
-Por lo tanto, procedemos a guardar el contenido ofuscado en un archivo .php para analizarlo más adelante. Esto se puede realizar de muchas maneras, pero para evitar complicaciones, simplemente copiaré y pegaré el contenido del archivo PHP en un archivo local en mi equipo. El archivo quedaría de la siguiente manera:
+Por lo tanto, procedemos a guardar el contenido ofuscado en un archivo `.php` para analizarlo más adelante. Esto se puede realizar de muchas maneras, pero para evitar complicaciones, simplemente copiaré y pegaré el contenido del archivo PHP en un archivo local en mi equipo. El archivo quedaría de la siguiente manera:
 
 ![](/assets/images/htb-cyber-apocalypse-roten/galacticmap.png)
 
