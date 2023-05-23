@@ -56,7 +56,7 @@ Como podemos observar, el servidor web es `targetaggregator.intergalacticministr
 
 Procedemos a filtrar los paquetes utilizando el siguiente filtro en `wireshark`: 
 ```
-"http.host == "targetaggregator.intergalacticministry.com" && http.request.method == "POST"
+http.host == "targetaggregator.intergalacticministry.com" && http.request.method == "POST"
 ```
 
 ![](/assets/images/htb-cyber-apocalypse-roten/wireshark4.png)
