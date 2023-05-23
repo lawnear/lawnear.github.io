@@ -40,7 +40,7 @@ challenge.pcap: pcap capture file, microsecond ts (little-endian) - version 2.4 
 Procedemos a abrir el archivo en `wireshark` para analizar el contexto de los paquetes de red capturados y encontrar algún tipo de webshell cargada en el sitio web. Para ello, debemos identificar quien es el servidor web, así como las rutas normales que se sirven desde el sitio web y determinar qué elementos resultan sospechosos.
 
 ```
-❯ `wireshark` challenge.pcap
+❯ wireshark challenge.pcap
 ```
 ![](/assets/images/htb-cyber-apocalypse-roten/wireshark1.png)
 
