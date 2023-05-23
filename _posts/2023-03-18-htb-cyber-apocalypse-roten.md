@@ -67,7 +67,7 @@ En este punto, hay un dato que nos llama la atención, y es el hecho de que a tr
 
 ![](/assets/images/htb-cyber-apocalypse-roten/wireshark5.png)
 
-Al realizar un seguimiento de la secuencia HTTP enviada por el archivo PHP, podemos observar que se trata de un archivo llamado `galacticmap.php` y que, según su contenido, se encuentra ofuscado.
+Al realizar un seguimiento de la secuencia HTTP en la cual se envió el archivo PHP, podemos observar que se trata de un archivo llamado `galacticmap.php` y que, según su contenido, se encuentra ofuscado.
 
 ![](/assets/images/htb-cyber-apocalypse-roten/wireshark6.png)
 
