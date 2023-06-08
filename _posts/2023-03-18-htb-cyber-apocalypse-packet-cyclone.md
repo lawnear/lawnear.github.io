@@ -153,7 +153,7 @@ Para responder a esta pregunta, debemos examinar el detalle de la segunda detecc
 En el comando anterior, podemos observar que el destino es `remote:exfiltration`, lo que indica que el nombre de la carpeta es `exfiltration.`
 `Respuesta: exfiltration`
 
-Luego de responder estas seis simples preguntas, el contenedor Docker de HTB nos proporcionará la flag.}
+Luego de responder estas seis simples preguntas, el contenedor Docker de HTB nos proporcionará la flag.
 
 ## Flag
 
