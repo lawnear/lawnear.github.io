@@ -5,7 +5,7 @@ excerpt: "Este es el quinto desafío forense del evento Cyber Apocalypse 2023 de
 date: 2023-03-22
 classes: wide
 header:
-  teaser: /assets/images/htb-cyber-apocalypse-plaintext-treasure/cyber-apocalypse-ctf-2023.jpg
+  teaser: /assets/images/htb-cyber-apocalypse-packet-cyclone/chainsaw.png
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
 categories:
