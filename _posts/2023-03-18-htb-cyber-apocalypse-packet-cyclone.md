@@ -1,7 +1,7 @@
 ---
 layout: single
 title: Packet Cyclone - CTF HTB Cyber Apocalypse 2023
-excerpt: "Este es el quinto desafío forense del evento Cyber Apocalypse 2023 de Hack The Box. Se considera de dificultad fácil y consiste en analizar un archivo de registro de eventos de Windows (.evtx) generado por el servicio Sysmon. En este archivo se registra la ejecución sospechosa del software Rclone a través de la línea de comandos en un equipo con Windows. Nuestra tarea consiste en responder todas las preguntas solicitadas para que la plataforma de HTB nos entregue la flag del desafío."
+excerpt: "Este es el quinto desafío forense del evento Cyber Apocalypse 2023 de Hack The Box. Se considera de dificultad easy y consiste en analizar un archivo de registro de eventos de Windows (.evtx) generado por el servicio Sysmon. En este archivo se registra la ejecución sospechosa del software Rclone a través de la línea de comandos en un equipo con Windows. Nuestra tarea consiste en responder todas las preguntas solicitadas para que la plataforma de HTB nos entregue la flag del desafío."
 date: 2023-03-22
 classes: wide
 header:
