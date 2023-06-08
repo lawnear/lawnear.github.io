@@ -127,7 +127,7 @@ Si observamos los detalles encontrados por la herramienta `Chainsaw`, podemos ve
 ```
 rclone.exe config create remote mega user majmeret@protonmail.com pass FBMeavdiaFZbWzpMqIVhJCGXZ5XXZI1sU3EjhoKQw0rEoQqHyI
 ```
-Respuesta: majmeret@protonmail.com
+`Respuesta: majmeret@protonmail.com`
 
 2. ¿Cuál es la contraseña del atacante utilizada para el proceso de exfiltración?
 En el comando anterior, también se puede observar esta respuesta:
