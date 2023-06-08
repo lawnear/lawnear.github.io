@@ -15,11 +15,11 @@ remote_theme             : "mmistakes/minimal-mistakes@4.15.1"
 minimal_mistakes_skin    : "haxor" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
-locale                   : "en-US"
+locale                   : "es-CL"
 title                    : "ven0m91@gh-pages:~$ _"
 title_separator          : "-"
 name                     : "v3n0m"
-description              : "Posts about security, CTFs and networking"
+description              : "Blue Teamer | Entusiasta de la Ciberseguridad | Guitarrista autodidacta | CTF Player"
 url                      : "https://ven0m91.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "ven0m91/ven0m91.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -95,7 +95,7 @@ social:
 analytics:
   provider               : "google" # false (default), "google", "google-universal", "custom"
   google:
-    tracking_id          : "UA-145129883-1"
+    tracking_id          : "G-MTX0BS5P9W"
     anonymize_ip         : false # (default)
 
 
