@@ -5,7 +5,7 @@ excerpt: "Este es el cuarto desafío forense del evento \"Cyber Apocalypse 2023\
 date: 2023-03-21
 classes: wide
 header:
-  teaser: /assets/images/htb-cyber-apocalypse-roten/galacticmap.png
+  teaser: /assets/images/htb-cyber-apocalypse-plaintext-treasure/cyber-apocalypse-ctf-2023.jpg
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
 categories:

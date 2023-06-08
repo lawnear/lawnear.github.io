@@ -5,7 +5,7 @@ excerpt: "Este es el primer desafio forense del evento Cyber Apocalypse 2023 de 
 date: 2023-03-18
 classes: wide
 header:
-  teaser: /assets/images/htb-cyber-apocalypse-plaintext-treasure/wireshark1.png
+  teaser: /assets/images/htb-cyber-apocalypse-plaintext-treasure/cyber-apocalypse-ctf-2023.jpg
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
 categories:

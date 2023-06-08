@@ -5,7 +5,7 @@ excerpt: "Este es el tercer desafío forense del evento Cyber Apocalypse 2023 de
 date: 2023-03-20
 classes: wide
 header:
-  teaser: /assets/images/htb-cyber-apocalypse-extraterrestrial-persistence/sh1.png
+  teaser: /assets/images/htb-cyber-apocalypse-plaintext-treasure/cyber-apocalypse-ctf-2023.jpg
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
 categories:

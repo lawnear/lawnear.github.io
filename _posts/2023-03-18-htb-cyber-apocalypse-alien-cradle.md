@@ -5,7 +5,7 @@ excerpt: "Este es el segundo desafío forense del evento Cyber Apocalypse 2023 d
 date: 2023-03-19
 classes: wide
 header:
-  teaser: /assets/images/htb-cyber-apocalypse-alien-cradle-ps1.png
+  teaser: /assets/images/htb-cyber-apocalypse-plaintext-treasure/cyber-apocalypse-ctf-2023.jpg
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
 categories:
