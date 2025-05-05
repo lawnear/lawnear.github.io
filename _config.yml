@@ -16,13 +16,13 @@ minimal_mistakes_skin    : "haxor" # "air", "aqua", "contrast", "dark", "dirt", 
 
 # Site Settings
 locale                   : "es-CL"
-title                    : "ven0m91@gh-pages:~$ _"
+title                    : "lawnear@gh-pages:~$ _"
 title_separator          : "-"
-name                     : "v3n0m"
-description              : "Blue Teamer - Entusiasta de la Ciberseguridad - Guitarrista autodidacta - CTF Player"
-url                      : "https://ven0m91.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+name                     : "Lawnear"
+description              : "Analista de Ciberseguridad / Red Teamer / Pentester autodidacta"
+url                      : "https://lawnear.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : "ven0m91/ven0m91.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+repository               : "lawnear/lawnear.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 logo                     : "/assets/images/masthead.png"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 breadcrumbs              : true # true, false (default)
@@ -101,11 +101,11 @@ analytics:
 
 # Site Author
 author:
-  name             : "V3n0m"
+  name             : "Lawnear"
   avatar           : "/assets/images/avatar.png"
-  bio              : "Blue Teamer | Entusiasta de la Ciberseguridad <br> Guitarrista autodidacta | CTF Player"
+  bio              : "Analista de Ciberseguridad / Red Teamer / Pentester autodidacta"
   location         : "Chile"
-  email            : "ven0mv@protonmail.com"
+  email            : "lawnearh4ck@protonmail.com"
   uri              :
   home             : # null (default), "absolute or relative url to link to author home"
   bitbucket        :
@@ -114,7 +114,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "ven0m91"
+  github           : "lawnear"
   gitlab           :
   google_plus      :
   keybase          : # "snowscan"
@@ -126,7 +126,7 @@ author:
   stackoverflow    : # "123456/username" (the last part of your profile url, e.g. https://stackoverflow.com/users/123456/username)
   steam            : # "steamId" (the last part of your profile url, e.g. https://steamcommunity.com/id/steamId/)
   tumblr           :
-  twitter          : "V3n0mStrike"
+  Twitter          :
   vine             :
   weibo            :
   xing             :
