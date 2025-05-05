@@ -1,7 +1,7 @@
 ---
 layout: single
 title: SIEM ThreatHunting IBM QRadar CyberDefenders
-excerpt: "Este desafio es considerado de dificultad medium, donde exploraremos cómo investigar incidentes de seguridad utilizando una poderosa herramienta de IBM Qradar SIEM. Ya sea que tengas curiosidad sobre threath Hunting, incident response o herramientas SIEM como QRadar este articulo te puede ser de utilidad."
+excerpt: "Este desafío, considerado de dificultad medium por CyberDefenders, nos sumerge en la investigación de un incidente de seguridad en una compañía financiera utilizando IBM QRadar SIEM. El escenario sugiere la participación de un insider que facilitó el acceso a atacantes, quienes emplearon herramientas maliciosas conocidas. Nuestra misión será analizar registros de Sysmon, PowerShell, Suricata, Zeek y Event Logs para reconstruir la cadena de ataque, identificar técnicas MITRE ATT&CK como ejecución, movimiento lateral y exfiltración, y responder las preguntas clave del reto"
 date: 2025-05-03
 classes: wide
 header:
@@ -25,9 +25,10 @@ tags:
 
 ---
 
-![](/assets/images/cyberdefenders-qradar101/cyberdefenders-qradar101.png)
+![CyberDefenders QRadar 101](/assets/images/cyberdefenders-qradar101/cyberdefenders-qradar101.png){: .align-center style="width: 100%;"}
 
-**Dificultad:** Medium
+**Dificultad:** Medium  
+**🔗 Enlace al reto:** [CyberDefenders QRadar 101](https://cyberdefenders.org/blueteam-ctf-challenges/qradar101/){: .btn .btn--danger}
 
 ## Instrucciones
 
